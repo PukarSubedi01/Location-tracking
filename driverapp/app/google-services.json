@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "858789494999",
+    "firebase_url": "https://valid-lodge-277510.firebaseio.com",
+    "project_id": "valid-lodge-277510",
+    "storage_bucket": "valid-lodge-277510.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858789494999:android:f452e390b2518ed5f4f092",
+        "android_client_info": {
+          "package_name": "com.team.driverapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858789494999-arnbpf9ss7lkdvi1fpc48047dvhp6k5j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.team.driverapp",
+            "certificate_hash": "89fbeba382e021feb81efada100cbdddcdada734"
+          }
+        },
+        {
+          "client_id": "858789494999-d3hovfj6kuouc8h6385t8qvfl7q4lgto.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5tFkGcyksiAnAu3-r2Rqr-ipvVi8Rd7E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858789494999-d3hovfj6kuouc8h6385t8qvfl7q4lgto.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

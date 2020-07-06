@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">driverapp</string>
+    <string name="title_activity_maps">Driver</string>
+    <string name="sign_up">SignUp</string> <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+
+    <string name="dont_have_account">Don\'t have account</string>
+    <string name="offline">Offline</string>
+    <string name="need_location">Enable GPS SERVICE</string>
+    <string name="location_content">This app wants to change your device settings use GPS,Wi-Fi and cell networks for your location</string>
+    <string name="online_driver">Online</string>
+</resources>
