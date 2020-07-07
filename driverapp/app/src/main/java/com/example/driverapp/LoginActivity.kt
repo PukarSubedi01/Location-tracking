@@ -50,5 +50,44 @@ class LoginActivity : AppCompatActivity() {
             tv_password.requestFocus()
             return
         }
+
+        auth.signInWithEmailAndPassword(tv_username.text.toString(), tv_password.text.toString())
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+                    updateUI(user)
+                } else {
+
+                    updateUI(null)
+                }
+            }
     }
+
+    public override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+        updateUI(currentUser)
+    }
+
+    private fun updateUI(currentUser: FirebaseUser?) {
+
+        if (currentUser != null) {
+            if(currentUser.isEmailVerified) {
+                startActivity(Intent(this, MapsActivity::class.java))
+                finish()
+            }else{
+                Toast.makeText(
+                    baseContext, "Please verify your email address.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        } else {
+            Toast.makeText(
+                baseContext, "Login failed.",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+
 }
