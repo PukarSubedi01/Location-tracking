@@ -1,4 +1,11 @@
 package com.example.driverapp.interfaces
 
-class IPositiveNegativeListener {
+@FunctionalInterface
+interface IPositiveNegativeListener {
+
+    fun onPositive()
+
+    fun onNegative() {
+
+    }
 }
