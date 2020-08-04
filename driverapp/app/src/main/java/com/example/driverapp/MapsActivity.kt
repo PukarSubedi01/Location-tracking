@@ -28,7 +28,7 @@ class MapsActivity : AppCompatActivity() {
     private var driverOnlineFlag = false
     private var currentPositionMarker: Marker? = null
     private val googleMapHelper = GoogleMapHelper()
-    private val firebaseHelper = FirebaseHelper("11111")
+    private val firebaseHelper = FirebaseHelper()
     private val markerAnimationHelper = MarkerAnimationHelper()
     private val uiHelper = UiHelper()
 
