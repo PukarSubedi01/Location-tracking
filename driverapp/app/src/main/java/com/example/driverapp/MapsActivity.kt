@@ -1,10 +1,12 @@
 package com.example.driverapp
 
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 
 import android.os.Bundle
 import android.util.Log
+import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -75,5 +77,20 @@ class MapsActivity : AppCompatActivity() {
         if (currentPositionMarker == null)
             currentPositionMarker = googleMap.addMarker(googleMapHelper.getDriverMarkerOptions(latLng))
         else markerAnimationHelper.animateMarkerToGB(currentPositionMarker!!, latLng, LatLngInterpolator.Spherical())
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun requestLocationUpdate() {
+        if (!uiHelper.isHaveLocationPermission(this)) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION)
+            return
+        }
+        if (uiHelper.isLocationProviderEnabled(this))
+            uiHelper.showPositiveDialogWithListener(this, resources.getString(R.string.need_location), resources.getString(R.string.location_content), object : IPositiveNegativeListener {
+                override fun onPositive() {
+                    startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+                }
+            }, "Turn On", false)
+        locationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
     }
 }
