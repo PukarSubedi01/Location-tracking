@@ -14,6 +14,8 @@ import com.example.driverapp.helper.*
 import com.example.driverapp.model.Driver
 //import com.example.driverapp.interfaces.IPositiveNegativeListener
 import com.example.driverapp.interfaces.LatLngInterpolator
+import com.google.firebase.auth.FirebaseAuth
+
 //import com.example.driverapp.model.Driver
 
 class MapsActivity : AppCompatActivity() {
