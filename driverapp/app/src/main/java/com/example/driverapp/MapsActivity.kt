@@ -13,7 +13,7 @@ import com.google.android.gms.maps.model.Marker
 import com.example.driverapp.helper.*
 import com.example.driverapp.model.Driver
 //import com.example.driverapp.interfaces.IPositiveNegativeListener
-//import com.example.driverapp.interfaces.LatLngInterpolator
+import com.example.driverapp.interfaces.LatLngInterpolator
 //import com.example.driverapp.model.Driver
 
 class MapsActivity : AppCompatActivity() {
@@ -41,5 +41,13 @@ class MapsActivity : AppCompatActivity() {
     }
 
 
-
+    private fun animateCamera(latLng: LatLng) {
+        val cameraUpdate = googleMapHelper.buildCameraUpdate(latLng)
+        googleMap.animateCamera(cameraUpdate, 10, null)
+    }
+    private fun showOrAnimateMarker(latLng: LatLng) {
+        if (currentPositionMarker == null)
+            currentPositionMarker = googleMap.addMarker(googleMapHelper.getDriverMarkerOptions(latLng))
+        else markerAnimationHelper.animateMarkerToGB(currentPositionMarker!!, latLng, LatLngInterpolator.Spherical())
+    }
 }
