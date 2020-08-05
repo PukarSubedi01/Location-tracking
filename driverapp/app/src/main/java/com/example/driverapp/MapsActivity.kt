@@ -40,6 +40,30 @@ class MapsActivity : AppCompatActivity() {
 
     }
 
+    private fun createLocationCallback() {
+        locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult?) {
+                super.onLocationResult(locationResult)
+                if (locationResult!!.lastLocation == null) return
+                val latLng = LatLng(locationResult.lastLocation.latitude, locationResult.lastLocation.longitude)
+                Log.e("Location", latLng.latitude.toString() + " , " + latLng.longitude)
+                if (locationFlag) {
+                    locationFlag = false
+                    animateCamera(latLng)
+                }
+                if (driverOnlineFlag) firebaseHelper.updateDriver(Driver(lat = latLng.latitude, lng = latLng.longitude,driverId = retrieveCurrentEmail()))
+                showOrAnimateMarker(latLng)
+            }
+        }
+    }
+    private fun retrieveCurrentEmail(): String {
+        lateinit var auth: FirebaseAuth
+        auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
+        val Email=user?.email.toString()
+        return Email
+    }
+
 
     private fun animateCamera(latLng: LatLng) {
         val cameraUpdate = googleMapHelper.buildCameraUpdate(latLng)
